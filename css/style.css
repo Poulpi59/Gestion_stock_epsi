@@ -1,0 +1,62 @@
+body {
+  font-size: calc(12px + 0.5vmax);
+  margin: 0;
+  width: 100%;
+}
+
+header {
+  text-align: center;
+}
+
+nav ul {
+  display: table;
+  font-weight: bold;
+  margin-top: 0;
+  padding-bottom: 1%;
+  padding-left: 0;
+  padding-top: 1%;
+  text-align: center;
+  width: 100%;
+}
+
+nav li {
+  border: 1px solid black;
+  display: table-cell;
+  width: 25%;
+}
+
+nav li a {
+  display: block;
+  height: 100%;
+  padding: 5%;
+  width: 90%;
+}
+
+nav a:link {
+  color: black;
+  text-decoration: none;
+}
+
+nav a:visited {
+  color: black;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.login {
+  border: 1px solid black;
+  margin: 10%;
+  text-align: center;
+}
+
+.main {
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 10%;
+}
+
+.connect {
+  margin: 5%;
+}
