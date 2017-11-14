@@ -27,7 +27,7 @@
     </ul>
 </nav>
     <div class="main">
-        test
+        Test
     </div>
 </body>
 
