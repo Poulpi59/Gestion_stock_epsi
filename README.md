@@ -2,7 +2,7 @@
 Projet U'dev
 
 19/10/2017 :
-	- Ajout à Google Drive
+	- 1.0
 
 20/10/2017 :
 	- Ajout de fonctions pour clarifier le code
