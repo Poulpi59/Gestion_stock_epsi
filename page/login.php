@@ -28,9 +28,10 @@
             <input type="submit" name="submit" value="Connexion" class="connect">
         </form>
     </div>
-    <?php
 
+  <?php
     include ("function.php");
+    include ("sql.php");
 
     $mysqli = @mysql_connect("127.0.0.1", "root", "","epsi_stock");
     if ($mysqli->connect_errno)
@@ -40,11 +41,9 @@
         {
             echo "Echec de la connexion à MySQL";
         }else{
-          create_bdd($mysqli);
+            create_bdd($mysqli);
         }
     }
-
-
 
     if(isset($_POST["submit"])) {
         $login = $_POST["login"];
@@ -52,10 +51,10 @@
 
         $mysqli = @mysql_connect("127.0.0.1", "root", "","epsi_stock");
 
-        $res = mysql_query($mysqli ,"   SELECT login, mot_de_passe
-                                        FROM utilisateurs
-                                        WHERE login ='".$login."'
-                                        AND  mot_de_passe ='".$mdp."'");
+        $res = mysql_query($mysqli ,"   SELECT pseudo, motDePasse
+                                        FROM LoginUtilisateur
+                                        WHERE pseudo ='".$login."'
+                                        AND  motDePasse ='".$mdp."'");
 
         if(mysqli_num_rows($res) > 0)
         {

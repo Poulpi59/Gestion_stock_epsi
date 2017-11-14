@@ -1,6 +1,8 @@
-body {
+html, body {
+  font-family: 'Roboto', sans-serif;
   font-size: calc(12px + 0.5vmax);
   margin: 0;
+  padding: 0;
   width: 100%;
 }
 
@@ -54,9 +56,27 @@ nav a:hover {
 .main {
   padding-left: 10%;
   padding-right: 10%;
-  padding-top: 10%;
+  padding-top: 5%;
 }
 
 .connect {
   margin: 5%;
+}
+
+.right{
+  float: right;
+}
+
+button{
+  margin-bottom: 5%;
+}
+
+table{
+  width: 100%;
+}
+
+table, th, td{
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 1%;
 }
