@@ -15,9 +15,7 @@
 </head>
 
 <body>
-    <?php
-        include("page/header.php");
-    ?>
+    <?php include_once("page/header.php"); ?>
     <nav>
     <ul>
         <li><a href="index.php">Accueil</a></li>
