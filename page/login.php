@@ -14,9 +14,7 @@
 </head>
 
 <body>
-    <?php
-    include("header.php");
-?>
+    <?php include_once("header.php"); ?>
     <div class="login">
         <h2>Login</h2>
         <h5>Utilisateur :</h5>
@@ -30,18 +28,19 @@
     </div>
 
   <?php
-    include ("function.php");
-    include ("sql.php");
+    include_once ("function.php");
+    include_once ("../class/sql.php");
+    $sql = new sql();
 
-    $mysqli = @mysql_connect("127.0.0.1", "root", "","epsi_stock");
+    $mysqli = @$sql->connect("127.0.0.1", "root", "","epsi_stock");
     if ($mysqli->connect_errno)
     {
-        $mysqli = @mysql_connect("127.0.0.1", "root", "", "");
+        $mysqli = @$sql->connect("127.0.0.1", "root", "", "");
         if ($mysqli->connect_errno)
         {
             echo "Echec de la connexion à MySQL";
         }else{
-            create_bdd($mysqli);
+            $sql->create_bdd($mysqli);
         }
     }
 
@@ -49,9 +48,9 @@
         $login = $_POST["login"];
         $mdp = $_POST["mdp"];
 
-        $mysqli = @mysql_connect("127.0.0.1", "root", "","epsi_stock");
+        $mysqli = @$sql->connect("127.0.0.1", "root", "","epsi_stock");
 
-        $res = mysql_query($mysqli ,"   SELECT pseudo, motDePasse
+        $res = $sql->query($mysqli ,"   SELECT pseudo, motDePasse
                                         FROM LoginUtilisateur
                                         WHERE pseudo ='".$login."'
                                         AND  motDePasse ='".$mdp."'");
@@ -66,6 +65,7 @@
             echo "<center>Utilisateur ou Mot de passe incorrect</center>";
         }
     }
+    $mysqli->close();
 ?>
 </body>
 

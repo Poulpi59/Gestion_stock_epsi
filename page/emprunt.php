@@ -1,6 +1,6 @@
 <?php
-    include ("function.php");
-    include ("sql.php");
+    include_once ("function.php");
+    include_once ("../class/sql.php");
     logged();
 ?>
 
@@ -16,8 +16,8 @@
 
 <body>
     <?php
-        include("header.php");
-        include("nav.php");
+        include_once("header.php");
+        include_once("nav.php");
     ?>
     <div class="main">
       <div style="width: 100%;">
@@ -34,17 +34,18 @@
           <th>Modifier/Supprimer</th>
         </tr>
         <?php
-          $mysqli = @mysql_connect("localhost", "root", "","epsi_stock");
-          $res = mysql_query($mysqli ,"  SELECT * FROM emprunt");
+          $sql = new sql();
+          $mysqli = @$sql->connect("localhost", "root", "","epsi_stock");
+          $res = $sql->query($mysqli ,"  SELECT * FROM emprunt");
           $i = 0;
           while ($row = mysqli_fetch_array($res)) {
         ?>
           <tr>
             <td>
               <?php
-                $res1 = mysql_query($mysqli ,"  SELECT * FROM emprunteur WHERE id = $row[id_Emprunteur]");
+                $res1 = $sql->query($mysqli ,"  SELECT * FROM emprunteur WHERE id = $row[id_Emprunteur]");
                 $row1 = mysqli_fetch_array($res1);
-                $res2 = mysql_query($mysqli ,"  SELECT * FROM promotion WHERE id = $row1[id_Promotion]");
+                $res2 = $sql->query($mysqli ,"  SELECT * FROM promotion WHERE id = $row1[id_Promotion]");
                 $row2 = mysqli_fetch_array($res2);
                 echo $row1["nom"];
                 echo " ";
@@ -55,13 +56,13 @@
             </td>
             <td>
               <?php
-                $res1 = mysql_query($mysqli ,"  SELECT * FROM objet WHERE id = $row[id_Objet]");
+                $res1 = $sql->query($mysqli ,"  SELECT * FROM objet WHERE id = $row[id_Objet]");
                 $row1 = mysqli_fetch_array($res1);
-                $res2 = mysql_query($mysqli ,"  SELECT * FROM typeobjet WHERE id = $row1[id_TypeObjet]");
+                $res2 = $sql->query($mysqli ,"  SELECT * FROM typeobjet WHERE id = $row1[id_TypeObjet]");
                 $row2 = mysqli_fetch_array($res2);
-                $res3 = mysql_query($mysqli ,"  SELECT * FROM marque WHERE id = $row1[id_Marque]");
+                $res3 = $sql->query($mysqli ,"  SELECT * FROM marque WHERE id = $row1[id_Marque]");
                 $row3 = mysqli_fetch_array($res3);
-                $res4 = mysql_query($mysqli ,"  SELECT * FROM modele WHERE id = $row1[id_Modele]");
+                $res4 = $sql->query($mysqli ,"  SELECT * FROM modele WHERE id = $row1[id_Modele]");
                 $row4 = mysqli_fetch_array($res4);
                 echo $row2["libelle"];
                 echo " ";
@@ -80,7 +81,8 @@
               Editer
             </td>
           </tr>
-          <?php }
+          <?php
+            }
             $mysqli->close();
           ?>
           </table>
