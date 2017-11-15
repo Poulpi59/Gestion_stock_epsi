@@ -32,30 +32,30 @@
     include_once ("../class/sql.php");
     $sql = new sql();
 
-    $mysqli = @$sql->connect("127.0.0.1", "root", "","epsi_stock");
-    if ($mysqli->connect_errno)
-    {
-        $mysqli = @$sql->connect("127.0.0.1", "root", "", "");
-        if ($mysqli->connect_errno)
-        {
-            echo "Echec de la connexion à MySQL";
-        }else{
-            $sql->create_bdd($mysqli);
-        }
+    try{
+      @$sql->connect("127.0.0.1", "root", "","epsi_stock");
+    }
+    catch (Exception $e){
+      try {
+        @$sql->connect("127.0.0.1", "root", "", "");
+        $sql->create_bdd();
+      } catch (Exception $e) {
+        echo "Echec de la connexion à MySQL";
+      }
     }
 
     if(isset($_POST["submit"])) {
         $login = $_POST["login"];
         $mdp = $_POST["mdp"];
 
-        $mysqli = @$sql->connect("127.0.0.1", "root", "","epsi_stock");
+        @$sql->connect("127.0.0.1", "root", "","epsi_stock");
 
-        $res = $sql->query($mysqli ,"   SELECT pseudo, motDePasse
-                                        FROM LoginUtilisateur
-                                        WHERE pseudo ='".$login."'
-                                        AND  motDePasse ='".$mdp."'");
+        $res = $sql->query("  SELECT pseudo, motDePasse
+                              FROM LoginUtilisateur
+                              WHERE pseudo ='".$login."'
+                              AND  motDePasse ='".$mdp."'");
 
-        if(mysqli_num_rows($res) > 0)
+        if(($res->rowCount()) > 0)
         {
             $_SESSION["user"] = true;
             header("location: ../index.php");
@@ -65,7 +65,7 @@
             echo "<center>Utilisateur ou Mot de passe incorrect</center>";
         }
     }
-    $mysqli->close();
+    $sql->close();
 ?>
 </body>
 

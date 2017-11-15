@@ -2,24 +2,32 @@
 
 class sql{
 
-  function connect($adr, $user, $mdp, $bdd){
-    $mysqli = new mysqli($adr, $user, $mdp, $bdd);
+  private $bdd;
+
+  function connect($adr, $login, $pass, $bdd){
+    //$mysqli = new mysqli($adr, $user, $mdp, $bdd);
+    $this->bdd = new PDO("mysql:host=".$adr.";dbname=".$bdd."", $login, $pass);
     return $mysqli;
   }
 
-  function query($mysqli, $query){
-    $res = $mysqli->query($query);
+  function query($query){
+    //$res = $mysqli->query($query);
+    $res = $this->bdd->query($query);
     return $res;
   }
 
-  function create_bdd($mysqli)
+  function close(){
+    $this->bdd = null;
+  }
+
+  function create_bdd()
   {
-    $this->query($mysqli ,"CREATE DATABASE IF NOT EXISTS epsi_stock");
+    $this->query("CREATE DATABASE IF NOT EXISTS epsi_stock");
     $mysqli = @$this->connect("localhost", "root", "","epsi_stock");
 
     # Table: Promotion
 
-    $this->query($mysqli ,"CREATE TABLE Promotion(
+    $this->query("CREATE TABLE Promotion(
       id             int (11) Auto_increment  NOT NULL ,
       nom            Varchar (25) ,
       anneePromotion Varchar (25) ,
@@ -28,7 +36,7 @@ class sql{
 
     # Table: Emprunteur
 
-    $this->query($mysqli ,"CREATE TABLE Emprunteur(
+    $this->query("CREATE TABLE Emprunteur(
       id           int (11) Auto_increment  NOT NULL ,
       nom          Varchar (25) ,
       prenom       Varchar (25) ,
@@ -38,7 +46,7 @@ class sql{
 
     # Table: Etat
 
-    $this->query($mysqli ,"CREATE TABLE Etat(
+    $this->query("CREATE TABLE Etat(
       id      int (11) Auto_increment  NOT NULL ,
       libelle Varchar (25) ,
       PRIMARY KEY (id )
@@ -46,7 +54,7 @@ class sql{
 
     # Table: Objet
 
-    $this->query($mysqli ,"CREATE TABLE Objet(
+    $this->query("CREATE TABLE Objet(
       id           int (11) Auto_increment  NOT NULL ,
       type         Varchar (25) ,
       id_TypeObjet Int ,
@@ -57,7 +65,7 @@ class sql{
 
       # Table: Utilisateur
 
-      $this->query($mysqli ,"CREATE TABLE Utilisateur(
+      $this->query("CREATE TABLE Utilisateur(
       id                  int (11) Auto_increment  NOT NULL ,
       nom                 Varchar (25) ,
       prenom              Varchar (25) ,
@@ -68,7 +76,7 @@ class sql{
 
       # Table: LoginUtilisateur
 
-      $this->query($mysqli ,"CREATE TABLE LoginUtilisateur(
+      $this->query("CREATE TABLE LoginUtilisateur(
       id         int (11) Auto_increment  NOT NULL ,
       pseudo     Varchar (25) ,
       motDePasse Varchar (25) ,
@@ -77,7 +85,7 @@ class sql{
 
       # Table: RoleUtilisateur
 
-      $this->query($mysqli ,"CREATE TABLE RoleUtilisateur(
+      $this->query("CREATE TABLE RoleUtilisateur(
       id      int (11) Auto_increment  NOT NULL ,
       libelle Varchar (25) ,
       PRIMARY KEY (id )
@@ -85,7 +93,7 @@ class sql{
 
       # Table: TypeObjet
 
-      $this->query($mysqli ,"CREATE TABLE TypeObjet(
+      $this->query("CREATE TABLE TypeObjet(
       id      int (11) Auto_increment  NOT NULL ,
       libelle Varchar (25) ,
       PRIMARY KEY (id )
@@ -93,7 +101,7 @@ class sql{
 
       # Table: Modele
 
-      $this->query($mysqli ,"CREATE TABLE Modele(
+      $this->query("CREATE TABLE Modele(
       id      int (11) Auto_increment  NOT NULL ,
       libelle Varchar (25) ,
       PRIMARY KEY (id )
@@ -101,7 +109,7 @@ class sql{
 
       # Table: Marque
 
-      $this->query($mysqli ,"CREATE TABLE Marque(
+      $this->query("CREATE TABLE Marque(
       id      int (11) Auto_increment  NOT NULL ,
       libelle Varchar (25) ,
       PRIMARY KEY (id )
@@ -109,7 +117,7 @@ class sql{
 
       # Table: Emprunt
 
-      $this->query($mysqli ,"CREATE TABLE Emprunt(
+      $this->query("CREATE TABLE Emprunt(
       id                int (11) Auto_increment  NOT NULL ,
       dateDebut         Datetime ,
       dateFinTherorique Datetime ,
@@ -121,47 +129,47 @@ class sql{
       PRIMARY KEY (id )
       )ENGINE=InnoDB");
 
-      $this->query($mysqli ,"ALTER TABLE Emprunteur ADD CONSTRAINT FK_Emprunteur_id_Promotion FOREIGN KEY (id_Promotion) REFERENCES Promotion(id)");
-      $this->query($mysqli ,"ALTER TABLE Objet ADD CONSTRAINT FK_Objet_id_TypeObjet FOREIGN KEY (id_TypeObjet) REFERENCES TypeObjet(id)");
-      $this->query($mysqli ,"ALTER TABLE Objet ADD CONSTRAINT FK_Objet_id_Marque FOREIGN KEY (id_Marque) REFERENCES Marque(id)");
-      $this->query($mysqli ,"ALTER TABLE Objet ADD CONSTRAINT FK_Objet_id_Modele FOREIGN KEY (id_Modele) REFERENCES Modele(id)");
-      $this->query($mysqli ,"ALTER TABLE Utilisateur ADD CONSTRAINT FK_Utilisateur_id_LoginUtilisateur FOREIGN KEY (id_LoginUtilisateur) REFERENCES LoginUtilisateur(id)");
-      $this->query($mysqli ,"ALTER TABLE Utilisateur ADD CONSTRAINT FK_Utilisateur_id_RoleUtilisateur FOREIGN KEY (id_RoleUtilisateur) REFERENCES RoleUtilisateur(id)");
-      $this->query($mysqli ,"ALTER TABLE Emprunt ADD CONSTRAINT FK_Emprunt_id_Emprunteur FOREIGN KEY (id_Emprunteur) REFERENCES Emprunteur(id)");
-      $this->query($mysqli ,"ALTER TABLE Emprunt ADD CONSTRAINT FK_Emprunt_id_Etat FOREIGN KEY (id_Etat) REFERENCES Etat(id)");
-      $this->query($mysqli ,"ALTER TABLE Emprunt ADD CONSTRAINT FK_Emprunt_id_Objet FOREIGN KEY (id_Objet) REFERENCES Objet(id)");
+      $this->query("ALTER TABLE Emprunteur ADD CONSTRAINT FK_Emprunteur_id_Promotion FOREIGN KEY (id_Promotion) REFERENCES Promotion(id)");
+      $this->query("ALTER TABLE Objet ADD CONSTRAINT FK_Objet_id_TypeObjet FOREIGN KEY (id_TypeObjet) REFERENCES TypeObjet(id)");
+      $this->query("ALTER TABLE Objet ADD CONSTRAINT FK_Objet_id_Marque FOREIGN KEY (id_Marque) REFERENCES Marque(id)");
+      $this->query("ALTER TABLE Objet ADD CONSTRAINT FK_Objet_id_Modele FOREIGN KEY (id_Modele) REFERENCES Modele(id)");
+      $this->query("ALTER TABLE Utilisateur ADD CONSTRAINT FK_Utilisateur_id_LoginUtilisateur FOREIGN KEY (id_LoginUtilisateur) REFERENCES LoginUtilisateur(id)");
+      $this->query("ALTER TABLE Utilisateur ADD CONSTRAINT FK_Utilisateur_id_RoleUtilisateur FOREIGN KEY (id_RoleUtilisateur) REFERENCES RoleUtilisateur(id)");
+      $this->query("ALTER TABLE Emprunt ADD CONSTRAINT FK_Emprunt_id_Emprunteur FOREIGN KEY (id_Emprunteur) REFERENCES Emprunteur(id)");
+      $this->query("ALTER TABLE Emprunt ADD CONSTRAINT FK_Emprunt_id_Etat FOREIGN KEY (id_Etat) REFERENCES Etat(id)");
+      $this->query("ALTER TABLE Emprunt ADD CONSTRAINT FK_Emprunt_id_Objet FOREIGN KEY (id_Objet) REFERENCES Objet(id)");
 
-      $this->query($mysqli ,"  INSERT INTO LoginUtilisateur (pseudo, motDePasse)
+      $this->query("  INSERT INTO LoginUtilisateur (pseudo, motDePasse)
       VALUES ('admin', 'admin')");
 
-      $this->query($mysqli ,"  INSERT INTO promotion (nom, anneePromotion)
+      $this->query("  INSERT INTO promotion (nom, anneePromotion)
       VALUES ('UDEV', '2015')");
 
-      $this->query($mysqli ,"  INSERT INTO emprunteur (nom, prenom, id_Promotion)
+      $this->query("  INSERT INTO emprunteur (nom, prenom, id_Promotion)
       VALUES ('Max', 'Xam', '1')");
 
-      $this->query($mysqli ,"  INSERT INTO typeobjet (libelle)
+      $this->query("  INSERT INTO typeobjet (libelle)
       VALUES ('souris')");
 
-      $this->query($mysqli ,"  INSERT INTO marque (libelle)
+      $this->query("  INSERT INTO marque (libelle)
       VALUES ('AcerARien')");
 
-      $this->query($mysqli ,"  INSERT INTO modele (libelle)
+      $this->query("  INSERT INTO modele (libelle)
       VALUES ('Super3000')");
 
-      $this->query($mysqli ,"  INSERT INTO objet (type, id_TypeObjet, id_Marque, id_Modele)
+      $this->query("  INSERT INTO objet (type, id_TypeObjet, id_Marque, id_Modele)
       VALUES ('test', '1', '1', '1')");
 
-      $this->query($mysqli ,"  INSERT INTO etat (libelle)
+      $this->query("  INSERT INTO etat (libelle)
       VALUES ('Bad')");
 
-      $this->query($mysqli ,"  INSERT INTO emprunt (dateDebut, dateFinTherorique, dateRestitution, quantiteEmprunte, id_Emprunteur, id_Etat, id_Objet)
+      $this->query("  INSERT INTO emprunt (dateDebut, dateFinTherorique, dateRestitution, quantiteEmprunte, id_Emprunteur, id_Etat, id_Objet)
       VALUES ('1995-03-01', '1995-03-15', '1995-03-30', '1', '1', '1', '1')");
 
-      $this->query($mysqli ,"  INSERT INTO emprunt (dateDebut, dateFinTherorique, dateRestitution, quantiteEmprunte, id_Emprunteur, id_Etat, id_Objet)
+      $this->query("  INSERT INTO emprunt (dateDebut, dateFinTherorique, dateRestitution, quantiteEmprunte, id_Emprunteur, id_Etat, id_Objet)
       VALUES ('1995-03-01', '2017-10-30', '2017-11-30', '1', '1', '1', '1')");
 
-      $mysqli->close();
+      $this->close();
     }
 }
 
