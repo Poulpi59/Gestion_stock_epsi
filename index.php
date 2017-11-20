@@ -23,6 +23,7 @@
         <li><a href="page/ajouter_modifier.php">Ajouter/Modifier</a></li>
         <li><a href="page/deconnexion.php">Déconnexion</a></li>
     </ul>
+    
 </nav>
     <div class="main">
         Test

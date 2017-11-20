@@ -31,7 +31,7 @@
           <th>Matériel</th>
           <th>Sortie</th>
           <th>Retour</th>
-          <th>Modifier/Supprimer</th>
+          <th colspan="2">Editer/Supprimer</th>
         </tr>
         <?php
           $sql = new sql();
@@ -72,13 +72,27 @@
             ?>
           </td>
           <td>
-            <?php echo $row['dateDebut'] ?>
+            <?php echo $row["dateDebut"]; ?>
           </td>
           <td>
-            <?php echo $row['dateRestitution'] ?>
+            <?php echo $row["dateRestitution"]; ?>
           </td>
           <td>
-            Editer
+            <form action="edit.php" method="post">
+              <input type="hidden" name="id" value="<?php echo $row["id"]; ?>"/>
+              <input type="submit" value="Editer"/>
+            </form>
+          </td>
+          <td>
+            <form action="emprunt.php" method="post">
+            <input type="hidden" name="id" value="<?php echo $row["id"]; ?>"/>
+              <input type="submit" value="X" name="<?php echo $row["id"]; ?>">
+            </form>
+            <?php
+              if(isset($_POST[$row["id"]])) {
+                $sql->query("DELETE FROM emprunt WHERE id = $row[id]");
+              }
+            ?>
           </td>
         </tr>
         <?php

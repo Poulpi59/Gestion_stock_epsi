@@ -5,13 +5,11 @@ class sql{
   private $bdd;
 
   function connect($adr, $login, $pass, $bdd){
-    //$mysqli = new mysqli($adr, $user, $mdp, $bdd);
     $this->bdd = new PDO("mysql:host=".$adr.";dbname=".$bdd."", $login, $pass);
     return $mysqli;
   }
 
   function query($query){
-    //$res = $mysqli->query($query);
     $res = $this->bdd->query($query);
     return $res;
   }
