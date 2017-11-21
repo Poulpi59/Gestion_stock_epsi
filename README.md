@@ -1,3 +1,3 @@
-# Gestion_stock_epsi
+# Gestion Stock EPSI
 
 Projet U'Dev 2017
