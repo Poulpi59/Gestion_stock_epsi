@@ -8,22 +8,15 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>EPSI Stock - Accueil</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <?php include_once("head.php"); ?>
 </head>
 
 <body>
-    <?php include_once("header.php"); ?>
-    <nav>
-    <ul>
-        <li><a href="../index.php">Accueil</a></li>
-        <li><a href="emprunt.php">Emprunt</a></li>
-        <li><a href="ajouter_modifier.php">Ajouter/Modifier</a></li>
-        <li><a href="deconnexion.php">Déconnexion</a></li>
-    </ul>
-</nav>
+    <?php
+        include_once("header.php");
+        include_once("nav.php");
+    ?>
     <div class="main">
             <form action="addok.php" method="post">
                 Emprunteur : <input type="text" name="idEmp"><br>

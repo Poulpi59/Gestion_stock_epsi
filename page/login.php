@@ -7,10 +7,8 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>EPSI Stock - Connexion</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <?php include_once("head.php"); ?>
 </head>
 
 <body>

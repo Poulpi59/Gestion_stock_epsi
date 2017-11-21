@@ -8,10 +8,8 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>EPSI Stock - Emprunt</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <?php include_once("head.php"); ?>
 </head>
 
 <body>
@@ -103,13 +101,13 @@
           </td>
           <td>
             <form action="emprunt.php" method="post">
-            <input type="hidden" name="id" value="<?php echo $row["id"]; ?>"/>
+              <input type="hidden" name="id" value="<?php echo $row["id"]; ?>"/>
               <input type="submit" value="X" name="<?php echo $row["id"]; ?>">
             </form>
             <?php
               if(isset($_POST[$row["id"]])) {
                 $sql->query("DELETE FROM emprunt WHERE id = $row[id]");
-                header("location: emprunt.php");
+                header("Refresh:0");
               }
             ?>
           </td>
