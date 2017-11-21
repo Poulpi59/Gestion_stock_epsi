@@ -21,7 +21,9 @@
     ?>
     <div class="main">
       <div style="width: 100%;">
-        <button>Nouveau Prêt</button>
+        <form action="add.php">
+          <input type="submit" value="Nouveau Prêt" />
+        </form>
         <button class="right">Go</button>
         <input type="text" placeholder="Rechercher" class="right">
       </div>
@@ -29,7 +31,10 @@
         <tr>
           <th>Emprunteur</th>
           <th>Matériel</th>
+          <th>Quantité</th>
+          <th>Etat</th>
           <th>Sortie</th>
+          <th>Retour Prévu</th>
           <th>Retour</th>
           <th colspan="2">Editer/Supprimer</th>
         </tr>
@@ -72,7 +77,20 @@
             ?>
           </td>
           <td>
+            <?php echo $row["quantiteEmprunte"]; ?>
+          </td>
+          <td>
+            <?php
+              $res5 = $sql->query("SELECT * FROM etat WHERE id = $row[id_Etat]");
+              $row2 = $res5->fetch();
+              echo $row2["libelle"];
+            ?>
+          </td>
+          <td>
             <?php echo $row["dateDebut"]; ?>
+          </td>
+          <td>
+            <?php echo $row["dateFinTheorique"]; ?>
           </td>
           <td>
             <?php echo $row["dateRestitution"]; ?>
@@ -91,6 +109,7 @@
             <?php
               if(isset($_POST[$row["id"]])) {
                 $sql->query("DELETE FROM emprunt WHERE id = $row[id]");
+                header("location: emprunt.php");
               }
             ?>
           </td>

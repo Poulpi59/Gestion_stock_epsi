@@ -28,7 +28,6 @@
         <?php
             $sql = new sql();
             @$sql->connect("localhost", "root", "","epsi_stock");
-            $id = $_POST["id"];
             $idEmp = $_POST['idEmp'];
             $idObj = $_POST['idObj'];
             $qte = $_POST['qte'];
@@ -36,9 +35,8 @@
             $dateDeb = $_POST['dateDeb'];
             $dateFinTheo = $_POST['dateFinTheo'];
             $dateRest = $_POST['dateRest'];
-            $sql->query("   UPDATE emprunt 
-                            SET id_Emprunteur = '$idEmp', id_Objet = '$idObj', quantiteEmprunte = '$qte', id_Etat = '$idEtat', dateDebut = '$dateDeb', dateFinTheorique = '$dateFinTheo', dateRestitution = '$dateRest'
-                            WHERE id = '$id'");
+            $sql->query("   INSERT INTO emprunt (id, dateDebut, dateFinTheorique, dateRestitution, quantiteEmprunte, id_Emprunteur, id_Etat, id_Objet)
+                            VALUES (NULL, '$dateDeb', '$dateFinTheo', '$dateRest', '$qte', '$idEmp', '$idEtat', '$idObj')");
             $sql->close();
         ?>
         OK !
