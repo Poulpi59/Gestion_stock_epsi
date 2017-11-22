@@ -8,11 +8,11 @@
 
 <head>
     <title>EPSI Stock - Connexion</title>
-    <?php include_once("head.php"); ?>
+    <?php include_once("../includes/head.php"); ?>
 </head>
 
 <body>
-    <?php include_once("header.php"); ?>
+    <?php include_once("../includes/header.php"); ?>
     <div class="login">
         <h2>Login</h2>
         <h5>Utilisateur :</h5>
@@ -26,7 +26,7 @@
     </div>
 
   <?php
-    include_once ("function.php");
+    include_once ("../libs/function.php");
     include_once ("../class/sql.php");
 
     try{

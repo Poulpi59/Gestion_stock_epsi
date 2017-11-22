@@ -1,5 +1,5 @@
 <?php
-    include_once ("function.php");
+    include_once ("../libs/function.php");
     include_once ("../class/sql.php");
     logged();
 ?>
@@ -8,22 +8,23 @@
 <html>
 
 <head>
-    <title>EPSI Stock - Accueil</title>
-    <?php include_once("head.php"); ?>
+    <title>EPSI Stock - Editer</title>
+    <?php include_once("../includes/head.php"); ?>
 </head>
 
 <body>
     <?php
-        include_once("header.php");
-        include_once("nav.php");
+        include_once("../includes/header.php");
+        include_once("../includes/nav.php");
     ?>
     <div class="main">
         <?php
             $sql = new sql("localhost", "root", "","epsi_stock");
-            $res1 = $sql->query("SELECT * FROM emprunt");
+            $id = $_POST["id"];
+            $res1 = $sql->query("SELECT * FROM emprunt WHERE id = $id");
             $row1 = $res1->fetch();
         ?>
-        <form action="addok.php" method="post">
+        <form action="../libs/editok.php" method="post">
             Emprunteur :
             <select name="idEmp">
                 <?php
@@ -50,8 +51,11 @@
             Quantité :
             <select name="qte">
                 <?php
+                    echo "<option value=".$row1["quantiteEmprunte"].">".$row1["quantiteEmprunte"]."</option>";
                     for ($i=1; $i < 100; $i++) {
-                        echo "<option value=".$i.">".$i."</option>";
+                        if ($row1["quantiteEmprunte"] != $i) {
+                            echo "<option value=".$i.">".$i."</option>";
+                        }
                     }
                 ?>
             </select><br>
@@ -63,11 +67,11 @@
                     }
                 ?>
             </select><br>
-            Date sortie : <input type="date" name="dateDeb" required><br>
-            Date retour prévu : <input type="date" name="dateFinTheo" required><br>
-            Date retour : <input type="date" name="dateRest" required><br>
-            <input type="hidden" name="id"/>
-            <input type="submit" value="Ajouter">
+            Date sortie : <input type="date" name="dateDeb" value=<?php echo $row1["dateDebut"]; ?>><br>
+            Date retour prévu : <input type="date" name="dateFinTheo" value=<?php echo $row1["dateFinTheorique"]; ?>><br>
+            Date retour : <input type="date" name="dateRest" value=<?php echo $row1["dateRestitution"]; ?>><br>
+            <input type="hidden" name="id" value="<?php echo $id; ?>"/>
+            <input type="submit" value="Editer">
         </form>
     </div>
 </body>

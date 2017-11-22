@@ -1,5 +1,5 @@
 <?php
-    include ("function.php");
+    include ("../libs/function.php");
     logged();
 ?>
 <!DOCTYPE html>
@@ -7,12 +7,12 @@
 
 <head>
     <title>EPSI Stock - Déconnexion</title>
-    <?php include_once("head.php"); ?>
+    <?php include_once("../includes/head.php"); ?>
 </head>
 
 <body>
     <?php 
-        include("header.php");
+        include("../includes/header.php");
         session_destroy();
     ?>
     <div class="main">

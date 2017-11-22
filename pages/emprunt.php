@@ -1,5 +1,5 @@
 <?php
-    include_once ("function.php");
+    include_once ("../libs/function.php");
     include_once ("../class/sql.php");
     logged();
 ?>
@@ -9,13 +9,13 @@
 
 <head>
     <title>EPSI Stock - Emprunt</title>
-    <?php include_once("head.php"); ?>
+    <?php include_once("../includes/head.php"); ?>
 </head>
 
 <body>
     <?php
-        include_once("header.php");
-        include_once("nav.php");
+        include_once("../includes/header.php");
+        include_once("../includes/nav.php");
     ?>
     <div class="main">
       <div style="width: 100%;">
