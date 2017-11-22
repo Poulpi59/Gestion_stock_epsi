@@ -3,8 +3,7 @@
     include_once ("../class/sql.php");
     logged();
 
-    $sql = new sql();
-    @$sql->connect("localhost", "root", "","epsi_stock");
+    $sql = new sql("localhost", "root", "","epsi_stock");
     $id = $_POST["id"];
     $idEmp = $_POST['idEmp'];
     $idObj = $_POST['idObj'];

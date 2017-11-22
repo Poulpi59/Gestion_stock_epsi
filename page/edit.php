@@ -19,8 +19,7 @@
     ?>
     <div class="main">
         <?php
-            $sql = new sql();
-            @$sql->connect("localhost", "root", "","epsi_stock");
+            $sql = new sql("localhost", "root", "","epsi_stock");
             $id = $_POST["id"];
             $res1 = $sql->query("SELECT * FROM emprunt WHERE id = $id");
             $row1 = $res1->fetch();

@@ -4,6 +4,10 @@ class sql{
 
   private $bdd;
 
+  function __construct($adr, $login, $pass, $bdd){
+    $this->bdd = new PDO("mysql:host=".$adr.";dbname=".$bdd."", $login, $pass);
+  }
+
   function connect($adr, $login, $pass, $bdd){
     $this->bdd = new PDO("mysql:host=".$adr.";dbname=".$bdd."", $login, $pass);
   }
@@ -117,7 +121,7 @@ class sql{
       $this->query("CREATE TABLE Emprunt(
       id                int (11) Auto_increment  NOT NULL ,
       dateDebut         Datetime ,
-      dateFinTherorique Datetime ,
+      dateFinTheorique Datetime ,
       dateRestitution   Datetime ,
       quantiteEmprunte  Int ,
       id_Emprunteur     Int ,
@@ -160,14 +164,13 @@ class sql{
       $this->query("  INSERT INTO etat (libelle)
       VALUES ('Bad')");
 
-      $this->query("  INSERT INTO emprunt (dateDebut, dateFinTherorique, dateRestitution, quantiteEmprunte, id_Emprunteur, id_Etat, id_Objet)
+      $this->query("  INSERT INTO emprunt (dateDebut, dateFinTheorique, dateRestitution, quantiteEmprunte, id_Emprunteur, id_Etat, id_Objet)
       VALUES ('1995-03-01', '1995-03-15', '1995-03-30', '1', '1', '1', '1')");
 
-      $this->query("  INSERT INTO emprunt (dateDebut, dateFinTherorique, dateRestitution, quantiteEmprunte, id_Emprunteur, id_Etat, id_Objet)
+      $this->query("  INSERT INTO emprunt (dateDebut, dateFinTheorique, dateRestitution, quantiteEmprunte, id_Emprunteur, id_Etat, id_Objet)
       VALUES ('1995-03-01', '2017-10-30', '2017-11-30', '1', '1', '1', '1')");
 
       $this->close();
     }
 }
-
 ?>

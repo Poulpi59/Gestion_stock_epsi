@@ -28,14 +28,13 @@
   <?php
     include_once ("function.php");
     include_once ("../class/sql.php");
-    $sql = new sql();
 
     try{
-      @$sql->connect("127.0.0.1", "root", "","epsi_stock");
+      @$sql = new sql("127.0.0.1", "root", "","epsi_stock");
     }
     catch (Exception $e){
       try {
-        @$sql->connect("127.0.0.1", "root", "", "");
+        @$sql = new sql("127.0.0.1", "root", "", "");
         $sql->create_bdd();
       } catch (Exception $e) {
         echo "Echec de la connexion à MySQL";
@@ -46,7 +45,7 @@
         $login = $_POST["login"];
         $mdp = $_POST["mdp"];
 
-        @$sql->connect("127.0.0.1", "root", "","epsi_stock");
+        @$sql = new sql("127.0.0.1", "root", "","epsi_stock");
 
         $res = $sql->query("  SELECT pseudo, motDePasse
                               FROM LoginUtilisateur

@@ -37,8 +37,7 @@
           <th colspan="2">Editer/Supprimer</th>
         </tr>
         <?php
-          $sql = new sql();
-          @$sql->connect("localhost", "root", "","epsi_stock");
+          $sql = new sql("localhost", "root", "","epsi_stock");
           $res = $sql->query("SELECT * FROM emprunt");
           $i = 0;
           while($row = $res->fetch()) {
