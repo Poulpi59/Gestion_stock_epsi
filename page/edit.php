@@ -25,13 +25,51 @@
             $row1 = $res1->fetch();
         ?>
         <form action="editok.php" method="post">
-            Emprunteur : <input type="text" name="idEmp" value=<?php echo $row1["id_Emprunteur"]; ?>><br>
-            Objet : <input type="text" name="idObj" value=<?php echo $row1["id_Objet"]; ?>><br>
-            Quantité : <input type="text" name="qte" value=<?php echo $row1["quantiteEmprunte"]; ?>><br>
-            Etat : <input type="text" name="idEtat" value=<?php echo $row1["id_Etat"]; ?>><br>
-            Date Début : <input type="text" name="dateDeb" value=<?php echo $row1["dateDebut"]; ?>><br>
-            Date Fin Théorique : <input type="text" name="dateFinTheo" value=<?php echo $row1["dateFinTheorique"]; ?>><br>
-            Date Retour : <input type="text" name="dateRest" value=<?php echo $row1["dateRestitution"]; ?>><br>
+            Emprunteur :
+            <select name="idEmp">
+                <?php
+                    foreach($sql->query("SELECT * FROM emprunteur") as $row) {
+                        echo "<option value=".$row["id"].">".$row["nom"]." ".$row["prenom"]."</option>";
+                    }
+                ?>
+            </select><br>
+            Objet :
+            <select name="idObj">
+                <?php
+                    $res = $sql->query("SELECT * FROM objet");
+                    while($row = $res->fetch()) {
+                        $res2 = $sql->query("SELECT * FROM typeobjet WHERE id = $row[id_TypeObjet]");
+                        $row2 = $res2->fetch();
+                        $res3 = $sql->query("SELECT * FROM marque WHERE id = $row[id_Marque]");
+                        $row3 = $res3->fetch();
+                        $res4 = $sql->query("SELECT * FROM modele WHERE id = $row[id_Modele]");
+                        $row4 = $res4->fetch();
+                        echo "<option value=".$row["id"].">".$row2["libelle"]." ".$row3["libelle"]." ".$row4["libelle"]."</option>";
+                    }
+                ?>
+            </select><br>
+            Quantité :
+            <select name="qte">
+                <?php
+                    echo "<option value=".$row1["quantiteEmprunte"].">".$row1["quantiteEmprunte"]."</option>";
+                    for ($i=1; $i < 100; $i++) {
+                        if ($row1["quantiteEmprunte"] != $i) {
+                            echo "<option value=".$i.">".$i."</option>";
+                        }
+                    }
+                ?>
+            </select><br>
+            Etat :
+            <select name="idEtat">
+                <?php
+                    foreach($sql->query("SELECT * FROM etat") as $row) {
+                        echo "<option value=".$row["id"].">".$row["libelle"]."</option>";
+                    }
+                ?>
+            </select><br>
+            Date sortie : <input type="date" name="dateDeb" value=<?php echo $row1["dateDebut"]; ?>><br>
+            Date retour prévu : <input type="date" name="dateFinTheo" value=<?php echo $row1["dateFinTheorique"]; ?>><br>
+            Date retour : <input type="date" name="dateRest" value=<?php echo $row1["dateRestitution"]; ?>><br>
             <input type="hidden" name="id" value="<?php echo $id; ?>"/>
             <input type="submit" value="Editer">
         </form>

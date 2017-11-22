@@ -8,10 +8,6 @@ class sql{
     $this->bdd = new PDO("mysql:host=".$adr.";dbname=".$bdd."", $login, $pass);
   }
 
-  function connect($adr, $login, $pass, $bdd){
-    $this->bdd = new PDO("mysql:host=".$adr.";dbname=".$bdd."", $login, $pass);
-  }
-
   function query($query){
     $res = $this->bdd->query($query);
     return $res;
@@ -24,7 +20,7 @@ class sql{
   function create_bdd()
   {
     $this->query("CREATE DATABASE IF NOT EXISTS epsi_stock");
-    $mysqli = @$this->connect("localhost", "root", "","epsi_stock");
+    $this->bdd = new PDO("mysql:host=localhost;dbname=epsi_stock","root","");
 
     # Table: Promotion
 
@@ -57,7 +53,6 @@ class sql{
 
     $this->query("CREATE TABLE Objet(
       id           int (11) Auto_increment  NOT NULL ,
-      type         Varchar (25) ,
       id_TypeObjet Int ,
       id_Marque    Int ,
       id_Modele    Int ,
@@ -158,8 +153,8 @@ class sql{
       $this->query("  INSERT INTO modele (libelle)
       VALUES ('Super3000')");
 
-      $this->query("  INSERT INTO objet (type, id_TypeObjet, id_Marque, id_Modele)
-      VALUES ('test', '1', '1', '1')");
+      $this->query("  INSERT INTO objet (id_TypeObjet, id_Marque, id_Modele)
+      VALUES ('1', '1', '1')");
 
       $this->query("  INSERT INTO etat (libelle)
       VALUES ('Bad')");
