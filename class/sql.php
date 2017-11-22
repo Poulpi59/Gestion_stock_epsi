@@ -6,7 +6,6 @@ class sql{
 
   function connect($adr, $login, $pass, $bdd){
     $this->bdd = new PDO("mysql:host=".$adr.";dbname=".$bdd."", $login, $pass);
-    return $mysqli;
   }
 
   function query($query){
