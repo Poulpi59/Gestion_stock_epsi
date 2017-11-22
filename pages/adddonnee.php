@@ -1,5 +1,6 @@
 <?php
     include ("../libs/function.php");
+    include_once ("../class/sql.php");
     logged();
 ?>
 <!DOCTYPE html>
@@ -17,7 +18,20 @@
     ?>
     <div class="main">
         <center>
-            Test
+            Ajouter Emprunteur :
+            <form action="../libs/addEmprunteurSQL.php" method="post">
+                <input type="text" name="nom">
+                <input type="text" name="prenom">
+                <select name="promo">
+                    <?php
+                        $sql = new sql("localhost", "root", "","epsi_stock");
+                        foreach($sql->query("SELECT * FROM promotion") as $row) {
+                            echo "<option value=".$row["id"].">".$row["nom"]."</option>";
+                        }
+                    ?>
+                </select><br>
+                <input type="submit" value="Ajouter">
+            </form>
         </center>
     </div>
 </body>

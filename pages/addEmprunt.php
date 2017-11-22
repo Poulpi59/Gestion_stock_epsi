@@ -23,7 +23,7 @@
             $res1 = $sql->query("SELECT * FROM emprunt");
             $row1 = $res1->fetch();
         ?>
-        <form action="../libs/addok.php" method="post">
+        <form action="../libs/addEmpruntSQL.php" method="post">
             Emprunteur :
             <select name="idEmp">
                 <?php

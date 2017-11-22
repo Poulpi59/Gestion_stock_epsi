@@ -19,7 +19,7 @@
     ?>
     <div class="main">
       <div style="width: 100%;">
-        <form action="add.php">
+        <form action="addEmprunt.php">
           <input type="submit" value="Nouveau Prêt" />
         </form>
         <button class="right">Go</button>
@@ -92,7 +92,7 @@
             <?php echo $row["dateRestitution"]; ?>
           </td>
           <td>
-            <form action="edit.php" method="post">
+            <form action="editEmprunt.php" method="post">
               <input type="hidden" name="id" value="<?php echo $row["id"]; ?>"/>
               <input type="submit" value="Editer"/>
             </form>

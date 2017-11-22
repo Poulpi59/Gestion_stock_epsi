@@ -145,7 +145,7 @@ class sql{
       VALUES ('Max', 'Xam', '1')");
 
       $this->query("  INSERT INTO typeobjet (libelle)
-      VALUES ('souris')");
+      VALUES ('Souris')");
 
       $this->query("  INSERT INTO marque (libelle)
       VALUES ('AcerARien')");

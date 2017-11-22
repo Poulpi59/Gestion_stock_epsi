@@ -24,7 +24,7 @@
             $res1 = $sql->query("SELECT * FROM emprunt WHERE id = $id");
             $row1 = $res1->fetch();
         ?>
-        <form action="../libs/editok.php" method="post">
+        <form action="../libs/editEmpruntSQL.php" method="post">
             Emprunteur :
             <select name="idEmp">
                 <?php
