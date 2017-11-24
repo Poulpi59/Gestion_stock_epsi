@@ -105,7 +105,7 @@ include_once("../includes/nav.php");
                     <?php
                     if (isset($_POST[$row["id"]])) {
                         $sql->query("DELETE FROM emprunt WHERE id = $row[id]");
-                        header("Refresh:0");
+                        echo "<meta http-equiv='refresh' content='0';>";
                     }
                     ?>
                 </td>
