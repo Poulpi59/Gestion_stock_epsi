@@ -30,7 +30,7 @@ if ($_SESSION["user"] != true) {
 <div class="main">
     <center>
         <a href="pages/emprunt.php"><h3>Emprunt</h3></a>
-        <a href="pages/addDonnées.php"><h3>Ajouter Données</h3></a>
+        <a href="pages/addDonnee.php"><h3>Ajouter Données</h3></a>
     </center>
 </div>
 </body>
