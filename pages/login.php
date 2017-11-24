@@ -1,6 +1,6 @@
 <?php
-    session_start();
-    $_SESSION["user"]= false;
+session_start();
+$_SESSION["user"] = false;
 ?>
 
 <!DOCTYPE html>
@@ -12,57 +12,53 @@
 </head>
 
 <body>
-    <?php include_once("../includes/header.php"); ?>
-    <div class="login">
-        <h2>Login</h2>
-        <h5>Utilisateur :</h5>
-        <form method="post">
-            <input type="text" name="login">
-            <h5>Mot de passe :</h5>
-            <input type="password" name="mdp">
-            <br>
-            <input type="submit" name="submit" value="Connexion" class="connect">
-        </form>
-    </div>
+<?php include_once("../includes/header.php"); ?>
+<div class="login">
+    <h2>Login</h2>
+    <h5>Utilisateur :</h5>
+    <form method="post">
+        <input type="text" name="login" placeholder="Utilisateur">
+        <h5>Mot de passe :</h5>
+        <input type="password" name="mdp" placeholder="Mot de Passe">
+        <br>
+        <input type="submit" name="submit" value="Connexion" class="connect">
+    </form>
+</div>
 
-  <?php
-    include_once ("../libs/function.php");
-    include_once ("../class/sql.php");
+<?php
+include_once("../libs/function.php");
+include_once("../class/sql.php");
 
-    try{
-      @$sql = new sql("127.0.0.1", "root", "","epsi_stock");
-    }
-    catch (Exception $e){
-      try {
+try {
+    @$sql = new sql("127.0.0.1", "root", "", "epsi_stock");
+} catch (Exception $e) {
+    try {
         @$sql = new sql("127.0.0.1", "root", "", "");
         $sql->create_bdd();
-      } catch (Exception $e) {
+    } catch (Exception $e) {
         echo "Echec de la connexion à MySQL";
-      }
     }
+}
 
-    if(isset($_POST["submit"])) {
-        $login = $_POST["login"];
-        $mdp = $_POST["mdp"];
+if (isset($_POST["submit"])) {
+    $login = $_POST["login"];
+    $mdp = $_POST["mdp"];
 
-        @$sql = new sql("127.0.0.1", "root", "","epsi_stock");
+    @$sql = new sql("127.0.0.1", "root", "", "epsi_stock");
 
-        $res = $sql->query("  SELECT pseudo, motDePasse
-                              FROM LoginUtilisateur
-                              WHERE pseudo ='".$login."'
-                              AND  motDePasse ='".$mdp."'");
+    $res = $sql->query("  SELECT pseudo, motDePasse
+                                FROM LoginUtilisateur
+                                WHERE pseudo ='" . $login . "'
+                                AND  motDePasse ='" . $mdp . "'");
 
-        if(($res->rowCount()) > 0)
-        {
-            $_SESSION["user"] = true;
-            header("location: ../index.php");
-        }
-        else
-        {
-            echo "<center>Utilisateur ou Mot de passe incorrect</center>";
-        }
+    if (($res->rowCount()) > 0) {
+        $_SESSION["user"] = true;
+        header("location: ../index.php");
+    } else {
+        echo "<center>Utilisateur ou Mot de passe incorrect</center>";
     }
-    $sql->close();
+}
+$sql->close();
 ?>
 </body>
 
