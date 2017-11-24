@@ -19,9 +19,10 @@ include_once("../includes/nav.php");
 <div class="main">
     <center>
         Ajouter Emprunteur :
-        <form action="../libs/addEmprunteurSQL.php" method="post">
+        <form action="../libs/addSQL.php" method="post">
             <input type="text" name="nom">
             <input type="text" name="prenom">
+            <input type="hidden" name="func" value="2">
             <select name="promo">
                 <?php
                 $sql = new sql("localhost", "root", "", "epsi_stock");

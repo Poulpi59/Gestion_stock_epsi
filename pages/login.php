@@ -48,8 +48,7 @@ if (isset($_POST["submit"])) {
 
     $res = $sql->query("  SELECT pseudo, motDePasse
                                 FROM LoginUtilisateur
-                                WHERE pseudo ='" . $login . "'
-                                AND  motDePasse ='" . $mdp . "'");
+                                WHERE pseudo = '$login' AND  motDePasse = '$mdp'");
 
     if (($res->rowCount()) > 0) {
         $_SESSION["user"] = true;

@@ -23,7 +23,7 @@ include_once("../includes/nav.php");
     $res1 = $sql->query("SELECT * FROM emprunt");
     $row1 = $res1->fetch();
     ?>
-    <form action="../libs/addEmpruntSQL.php" method="post">
+    <form action="../libs/addSQL.php" method="post">
         Emprunteur :
         <select name="idEmp">
             <?php
@@ -65,8 +65,8 @@ include_once("../includes/nav.php");
         </select><br>
         Date sortie : <input type="date" name="dateDeb" required><br>
         Date retour prévu : <input type="date" name="dateFinTheo" required><br>
-        Date retour : <input type="date" name="dateRest" required><br>
         <input type="hidden" name="id"/>
+        <input type="hidden" name="func" value="3">
         <input type="submit" value="Ajouter">
     </form>
 </div>

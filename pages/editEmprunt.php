@@ -24,7 +24,7 @@ include_once("../includes/nav.php");
     $res1 = $sql->query("SELECT * FROM emprunt WHERE id = $id");
     $row1 = $res1->fetch();
     ?>
-    <form action="../libs/editEmpruntSQL.php" method="post">
+    <form action="../libs/addSQL.php" method="post">
         Emprunteur :
         <select name="idEmp">
             <?php
@@ -71,6 +71,7 @@ include_once("../includes/nav.php");
         Date retour prévu : <input type="date" name="dateFinTheo" value=<?php echo $row1["dateFinTheorique"]; ?>><br>
         Date retour : <input type="date" name="dateRest" value=<?php echo $row1["dateRestitution"]; ?>><br>
         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
+        <input type="hidden" name="func" value="1">
         <input type="submit" value="Editer">
     </form>
 </div>
