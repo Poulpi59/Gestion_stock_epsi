@@ -15,10 +15,9 @@ $_SESSION["user"] = false;
 <?php include_once("../includes/header.php"); ?>
 <div class="login">
     <h2>Login</h2>
-    <h5>Utilisateur :</h5>
     <form method="post">
         <input type="text" name="login" placeholder="Utilisateur">
-        <h5>Mot de passe :</h5>
+        <br><br>
         <input type="password" name="mdp" placeholder="Mot de Passe">
         <br>
         <input type="submit" name="submit" value="Connexion" class="connect">

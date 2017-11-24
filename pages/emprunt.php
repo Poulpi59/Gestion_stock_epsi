@@ -27,14 +27,23 @@ include_once("../includes/nav.php");
     </div>
     <table>
         <tr>
-            <th>Emprunteur</th>
-            <th>Matériel</th>
+            <th colspan="3">Emprunteur</th>
+            <th colspan="5">Matériel</th>
+            <th colspan="3">Date</th>
+            <th colspan="2" rowspan="2">Editer/Supprimer</th>
+        </tr>
+        <tr>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Promotion</th>
+            <th>Type</th>
+            <th>Marque</th>
+            <th>Modèle</th>
             <th>Quantité</th>
             <th>Etat</th>
             <th>Sortie</th>
             <th>Retour Prévu</th>
             <th>Retour</th>
-            <th colspan="2">Editer/Supprimer</th>
         </tr>
         <?php
         $sql = new sql("localhost", "root", "", "epsi_stock");
@@ -49,12 +58,10 @@ include_once("../includes/nav.php");
                     $res2 = $sql->query("SELECT * FROM promotion WHERE id = $row1[id_Promotion]");
                     $row2 = $res2->fetch();
                     echo $row1["nom"];
-                    echo " ";
-                    echo $row1["prenom"];
-                    echo " ";
-                    echo $row2["nom"];
                     ?>
                 </td>
+                <td><?php echo $row1["prenom"]; ?></td>
+                <td><?php echo $row2["nom"]; ?></td>
                 <td>
                     <?php
                     $res1 = $sql->query("SELECT * FROM objet WHERE id = $row[id_Objet]");
@@ -66,12 +73,10 @@ include_once("../includes/nav.php");
                     $res4 = $sql->query("SELECT * FROM modele WHERE id = $row1[id_Modele]");
                     $row4 = $res4->fetch();
                     echo $row2["libelle"];
-                    echo " ";
-                    echo $row3["libelle"];
-                    echo " ";
-                    echo $row4["libelle"];
                     ?>
                 </td>
+                <td><?php echo $row3["libelle"]; ?></td>
+                <td><?php echo $row4["libelle"]; ?></td>
                 <td>
                     <?php echo $row["quantiteEmprunte"]; ?>
                 </td>

@@ -41,4 +41,16 @@ if ($func == 1) {
                         VALUES (NULL, '$dateDeb', '$dateFinTheo', '$qte', '$idEmp', '$idEtat', '$idObj')");
     $sql->close();
     header("location: ../pages/emprunt.php");
+} elseif ($func == 4) {
+    $nom = $_POST['nom'];
+    $anneePromo = $_POST['anneePromo'];
+    $sql->query("INSERT INTO promotion (nom, anneePromotion) 
+                        VALUE ('$nom', '$anneePromo')");
+    $sql->close();
+    header("location: ../pages/addDonnee.php");
+} elseif ($func == 5) {
+    $libelle = $_POST['libelle'];
+    $sql->query("INSERT INTO etat (libelle) VALUES ('$libelle')");
+    $sql->close();
+    header("location: ../pages/addDonnee.php");
 }

@@ -18,103 +18,103 @@ class sql
         # Table: Promotion
 
         $this->query("CREATE TABLE Promotion(
-      id             int (11) Auto_increment  NOT NULL ,
-      nom            Varchar (25) ,
-      anneePromotion Varchar (25) ,
+      id             INT (11) AUTO_INCREMENT  NOT NULL ,
+      nom            VARCHAR (25) ,
+      anneePromotion VARCHAR (25) ,
       PRIMARY KEY (id )
     )ENGINE=InnoDB");
 
         # Table: Emprunteur
 
         $this->query("CREATE TABLE Emprunteur(
-      id           int (11) Auto_increment  NOT NULL ,
-      nom          Varchar (25) ,
-      prenom       Varchar (25) ,
-      id_Promotion Int ,
+      id           INT (11) AUTO_INCREMENT  NOT NULL ,
+      nom          VARCHAR (25) ,
+      prenom       VARCHAR (25) ,
+      id_Promotion INT ,
       PRIMARY KEY (id )
     )ENGINE=InnoDB");
 
         # Table: Etat
 
         $this->query("CREATE TABLE Etat(
-      id      int (11) Auto_increment  NOT NULL ,
-      libelle Varchar (25) ,
+      id      INT (11) AUTO_INCREMENT  NOT NULL ,
+      libelle VARCHAR (25) ,
       PRIMARY KEY (id )
     )ENGINE=InnoDB");
 
         # Table: Objet
 
         $this->query("CREATE TABLE Objet(
-      id           int (11) Auto_increment  NOT NULL ,
-      id_TypeObjet Int ,
-      id_Marque    Int ,
-      id_Modele    Int ,
+      id           INT (11) AUTO_INCREMENT  NOT NULL ,
+      id_TypeObjet INT ,
+      id_Marque    INT ,
+      id_Modele    INT ,
       PRIMARY KEY (id )
       )ENGINE=InnoDB");
 
         # Table: Utilisateur
 
         $this->query("CREATE TABLE Utilisateur(
-      id                  int (11) Auto_increment  NOT NULL ,
-      nom                 Varchar (25) ,
-      prenom              Varchar (25) ,
-      id_LoginUtilisateur Int ,
-      id_RoleUtilisateur  Int ,
+      id                  INT (11) AUTO_INCREMENT  NOT NULL ,
+      nom                 VARCHAR (25) ,
+      prenom              VARCHAR (25) ,
+      id_LoginUtilisateur INT ,
+      id_RoleUtilisateur  INT ,
       PRIMARY KEY (id )
       )ENGINE=InnoDB");
 
         # Table: LoginUtilisateur
 
         $this->query("CREATE TABLE LoginUtilisateur(
-      id         int (11) Auto_increment  NOT NULL ,
-      pseudo     Varchar (25) ,
-      motDePasse Varchar (25) ,
+      id         INT (11) AUTO_INCREMENT  NOT NULL ,
+      pseudo     VARCHAR (25) ,
+      motDePasse VARCHAR (25) ,
       PRIMARY KEY (id )
       )ENGINE=InnoDB");
 
         # Table: RoleUtilisateur
 
         $this->query("CREATE TABLE RoleUtilisateur(
-      id      int (11) Auto_increment  NOT NULL ,
-      libelle Varchar (25) ,
+      id      INT (11) AUTO_INCREMENT  NOT NULL ,
+      libelle VARCHAR (25) ,
       PRIMARY KEY (id )
       )ENGINE=InnoDB");
 
         # Table: TypeObjet
 
         $this->query("CREATE TABLE TypeObjet(
-      id      int (11) Auto_increment  NOT NULL ,
-      libelle Varchar (25) ,
+      id      INT (11) AUTO_INCREMENT  NOT NULL ,
+      libelle VARCHAR (25) ,
       PRIMARY KEY (id )
       )ENGINE=InnoDB");
 
         # Table: Modele
 
         $this->query("CREATE TABLE Modele(
-      id      int (11) Auto_increment  NOT NULL ,
-      libelle Varchar (25) ,
+      id      INT (11) AUTO_INCREMENT  NOT NULL ,
+      libelle VARCHAR (25) ,
       PRIMARY KEY (id )
       )ENGINE=InnoDB");
 
         # Table: Marque
 
         $this->query("CREATE TABLE Marque(
-      id      int (11) Auto_increment  NOT NULL ,
-      libelle Varchar (25) ,
+      id      INT (11) AUTO_INCREMENT  NOT NULL ,
+      libelle VARCHAR (25) ,
       PRIMARY KEY (id )
       )ENGINE=InnoDB");
 
         # Table: Emprunt
 
         $this->query("CREATE TABLE Emprunt(
-      id                int (11) Auto_increment  NOT NULL ,
-      dateDebut         Datetime ,
-      dateFinTheorique Datetime ,
-      dateRestitution   Datetime ,
-      quantiteEmprunte  Int ,
-      id_Emprunteur     Int ,
-      id_Etat           Int ,
-      id_Objet          Int ,
+      id                INT (11) AUTO_INCREMENT  NOT NULL ,
+      dateDebut         DATE ,
+      dateFinTheorique  DATE ,
+      dateRestitution   DATE DEFAULT NULL,
+      quantiteEmprunte  INT ,
+      id_Emprunteur     INT ,
+      id_Etat           INT ,
+      id_Objet          INT ,
       PRIMARY KEY (id )
       )ENGINE=InnoDB");
 

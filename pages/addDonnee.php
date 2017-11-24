@@ -20,8 +20,8 @@ include_once("../includes/nav.php");
     <center>
         Ajouter Emprunteur :
         <form action="../libs/addSQL.php" method="post">
-            <input type="text" name="nom">
-            <input type="text" name="prenom">
+            <input type="text" name="nom" placeholder="Nom">
+            <input type="text" name="prenom" placeholder="Prénom">
             <input type="hidden" name="func" value="2">
             <select name="promo">
                 <?php
@@ -31,6 +31,21 @@ include_once("../includes/nav.php");
                 }
                 ?>
             </select><br>
+            <input type="submit" value="Ajouter">
+        </form>
+        <br>
+        Ajouter Formation :
+        <form action="../libs/addSQL.php" method="post">
+            <input type="text" name="nom" placeholder="Nom">
+            <input type="text" name="anneePromo" placeholder="Année Promotion">
+            <input type="hidden" name="func" value="4"><br>
+            <input type="submit" value="Ajouter">
+        </form>
+        <br>
+        Ajouter Etat :
+        <form action="../libs/addSQL.php" method="post">
+            <input type="text" name="libelle" placeholder="Libelle">
+            <input type="hidden" name="func" value="5"><br>
             <input type="submit" value="Ajouter">
         </form>
     </center>
