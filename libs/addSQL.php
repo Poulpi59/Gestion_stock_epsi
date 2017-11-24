@@ -37,8 +37,8 @@ if ($func == 1) {
     $dateDeb = $_POST['dateDeb'];
     $dateFinTheo = $_POST['dateFinTheo'];
     $dateRest = $_POST['dateRest'];
-    $sql->query("   INSERT INTO emprunt (id, dateDebut, dateFinTheorique, quantiteEmprunte, id_Emprunteur, id_Etat, id_Objet)
-                    VALUES (NULL, '$dateDeb', '$dateFinTheo', '$qte', '$idEmp', '$idEtat', '$idObj')");
+    $sql->query("INSERT INTO emprunt (id, dateDebut, dateFinTheorique, quantiteEmprunte, id_Emprunteur, id_Etat, id_Objet)
+                        VALUES (NULL, '$dateDeb', '$dateFinTheo', '$qte', '$idEmp', '$idEtat', '$idObj')");
     $sql->close();
     header("location: ../pages/emprunt.php");
 }
