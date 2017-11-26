@@ -45,12 +45,12 @@ if (isset($_POST["submit"])) {
 
     @$sql = new sql("127.0.0.1", "root", "", "epsi_stock");
 
-    $res = $sql->query("  SELECT pseudo, motDePasse
+    $res = $sql->query("  SELECT *
                                 FROM LoginUtilisateur
                                 WHERE pseudo = '$login' AND  motDePasse = '$mdp'");
-
+    $row = $res->fetch();
     if (($res->rowCount()) > 0) {
-        $_SESSION["user"] = true;
+        $_SESSION["user"] = $row["id"];;
         header("location: ../index.php");
     } else {
         echo "<center>Utilisateur ou Mot de passe incorrect</center>";

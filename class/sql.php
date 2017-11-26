@@ -59,7 +59,6 @@ class sql
       nom                 VARCHAR (25) ,
       prenom              VARCHAR (25) ,
       id_LoginUtilisateur INT ,
-      id_RoleUtilisateur  INT ,
       PRIMARY KEY (id )
       )ENGINE=InnoDB");
 
@@ -69,14 +68,6 @@ class sql
       id         INT (11) AUTO_INCREMENT  NOT NULL ,
       pseudo     VARCHAR (25) ,
       motDePasse VARCHAR (25) ,
-      PRIMARY KEY (id )
-      )ENGINE=InnoDB");
-
-        # Table: RoleUtilisateur
-
-        $this->query("CREATE TABLE RoleUtilisateur(
-      id      INT (11) AUTO_INCREMENT  NOT NULL ,
-      libelle VARCHAR (25) ,
       PRIMARY KEY (id )
       )ENGINE=InnoDB");
 
@@ -130,6 +121,9 @@ class sql
 
         $this->query("  INSERT INTO LoginUtilisateur (pseudo, motDePasse)
       VALUES ('admin', 'admin')");
+
+        $this->query("  INSERT INTO utilisateur (nom, prenom, id_LoginUtilisateur)
+      VALUES ('Robin', 'Nibou', '1')");
 
         $this->query("  INSERT INTO promotion (nom, anneePromotion)
       VALUES ('UDEV', '2015')");

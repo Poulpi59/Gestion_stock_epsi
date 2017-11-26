@@ -1,4 +1,6 @@
 <?php
+include_once("libs/function.php");
+include_once("class/sql.php");
 session_start();
 if ($_SESSION["user"] != true) {
     header("location: pages/login.php");
@@ -29,6 +31,14 @@ if ($_SESSION["user"] != true) {
 </nav>
 <div class="main">
     <center>
+        <?php
+        $sql = new sql("localhost", "root", "", "epsi_stock");
+        $res = $sql->query("  SELECT *
+                            FROM utilisateur
+                            WHERE id_LoginUtilisateur = $_SESSION[user]");
+        $row = $res->fetch();
+        echo "Bonjour ".$row['prenom']." ". $row['nom'];
+        ?>
         <a href="pages/emprunt.php"><h3>Emprunt</h3></a>
         <a href="pages/addDonnee.php"><h3>Ajouter Données</h3></a>
     </center>

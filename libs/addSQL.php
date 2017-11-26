@@ -53,4 +53,38 @@ if ($func == 1) {
     $sql->query("INSERT INTO etat (libelle) VALUES ('$libelle')");
     $sql->close();
     header("location: ../pages/addDonnee.php");
+} elseif ($func == 6) {
+    $login = $_POST['login'];
+    $mdp = $_POST['mdp'];
+    $nom = $_POST['nom'];
+    $prenom = $_POST['prenom'];
+    $sql->query("INSERT INTO loginutilisateur (pseudo, motDePasse) VALUES ('$login', '$mdp')");
+    $res = $sql->query("  SELECT id FROM loginutilisateur
+                                WHERE pseudo = '$login' AND  motDePasse = '$mdp'");
+    $row = $res->fetch();
+    $sql->query("INSERT INTO utilisateur (nom, prenom, id_LoginUtilisateur) VALUES ('$nom', '$prenom', '$row[id]')");
+    $sql->close();
+    header("location: ../pages/addDonnee.php");
+}elseif ($func == 7) {
+    $libelle = $_POST['libelle'];
+    $sql->query("INSERT INTO marque (libelle) VALUES ('$libelle')");
+    $sql->close();
+    header("location: ../pages/addDonnee.php");
+}elseif ($func == 8) {
+    $libelle = $_POST['libelle'];
+    $sql->query("INSERT INTO modele (libelle) VALUES ('$libelle')");
+    $sql->close();
+    header("location: ../pages/addDonnee.php");
+}elseif ($func == 9) {
+    $libelle = $_POST['libelle'];
+    $sql->query("INSERT INTO typeobjet (libelle) VALUES ('$libelle')");
+    $sql->close();
+    header("location: ../pages/addDonnee.php");
+}elseif ($func == 10) {
+    $typeObjet = $_POST['typeObjet'];
+    $marque = $_POST['marque'];
+    $modele = $_POST['modele'];
+    $sql->query("INSERT INTO objet (id_TypeObjet, id_Marque, id_Modele) VALUES ('$typeObjet', '$marque', '$modele')");
+    $sql->close();
+    header("location: ../pages/addDonnee.php");
 }
