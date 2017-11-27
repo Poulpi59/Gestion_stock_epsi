@@ -123,35 +123,55 @@ class sql
       VALUES ('admin', 'admin')");
 
         $this->query("  INSERT INTO utilisateur (nom, prenom, id_LoginUtilisateur)
-      VALUES ('Robin', 'Nibou', '1')");
+      VALUES ('Jean', 'Michel', '1')");
 
         $this->query("  INSERT INTO promotion (nom, anneePromotion)
-      VALUES ('UDEV', '2015')");
+      VALUES ('UDEV', '2017')");
+
+        $this->query("  INSERT INTO promotion (nom, anneePromotion)
+      VALUES ('BTS', '2014')");
 
         $this->query("  INSERT INTO emprunteur (nom, prenom, id_Promotion)
-      VALUES ('Max', 'Xam', '1')");
+      VALUES ('Romain', 'Desbois', '1')");
+
+        $this->query("  INSERT INTO emprunteur (nom, prenom, id_Promotion)
+      VALUES ('Maxou', 'Bidou', '2')");
 
         $this->query("  INSERT INTO typeobjet (libelle)
       VALUES ('Souris')");
 
+        $this->query("  INSERT INTO typeobjet (libelle)
+      VALUES ('Clavier')");
+
         $this->query("  INSERT INTO marque (libelle)
-      VALUES ('AcerARien')");
+      VALUES ('Acer')");
+
+        $this->query("  INSERT INTO marque (libelle)
+      VALUES ('Asus')");
 
         $this->query("  INSERT INTO modele (libelle)
-      VALUES ('Super3000')");
+      VALUES ('Game310')");
+
+        $this->query("  INSERT INTO modele (libelle)
+      VALUES ('Desk877')");
 
         $this->query("  INSERT INTO objet (id_TypeObjet, id_Marque, id_Modele)
       VALUES ('1', '1', '1')");
 
+        $this->query("  INSERT INTO objet (id_TypeObjet, id_Marque, id_Modele)
+      VALUES ('2', '2', '2')");
+
         $this->query("  INSERT INTO etat (libelle)
-      VALUES ('Bad')");
+      VALUES ('Bon')");
+
+        $this->query("  INSERT INTO etat (libelle)
+      VALUES ('Mauvais')");
 
         $this->query("  INSERT INTO emprunt (dateDebut, dateFinTheorique, dateRestitution, quantiteEmprunte, id_Emprunteur, id_Etat, id_Objet)
-      VALUES ('1995-03-01', '1995-03-15', '1995-03-30', '1', '1', '1', '1')");
+      VALUES ('2017-03-01', '2017-03-15', '2017-03-30', '5', '1', '1', '1')");
 
         $this->query("  INSERT INTO emprunt (dateDebut, dateFinTheorique, dateRestitution, quantiteEmprunte, id_Emprunteur, id_Etat, id_Objet)
-      VALUES ('1995-03-01', '2017-10-30', '2017-11-30', '1', '1', '1', '1')");
-
+      VALUES ('2017-03-01', '2017-10-30', '2017-11-30', '2', '2', '2', '2')");
         $this->close();
     }
 
