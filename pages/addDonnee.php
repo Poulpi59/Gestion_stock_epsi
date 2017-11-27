@@ -45,7 +45,7 @@ include_once("../includes/nav.php");
     <u>Utilisateur :</u>
     <form action="../libs/addSQL.php" method="post">
         <input type="text" name="login" placeholder="Login">
-        <input type="text" name="mdp" placeholder="Mot de passe">
+        <input type="text" name="mdp" placeholder="Mot de passe"><br>
         <input type="text" name="nom" placeholder="Nom">
         <input type="text" name="prenom" placeholder="Prénom">
         <input type="hidden" name="func" value="6"><br>
@@ -81,12 +81,6 @@ include_once("../includes/nav.php");
         <input type="hidden" name="func" value="10"><br>
         <input type="submit" value="Ajouter">
     </form>
-    <u>Etat :</u>
-    <form action="../libs/addSQL.php" method="post">
-        <input type="text" name="libelle" placeholder="Libelle">
-        <input type="hidden" name="func" value="5"><br>
-        <input type="submit" value="Ajouter">
-    </form>
     <u>Marque :</u>
     <form action="../libs/addSQL.php" method="post">
         <input type="text" name="libelle" placeholder="Libelle">
@@ -103,6 +97,13 @@ include_once("../includes/nav.php");
     <form action="../libs/addSQL.php" method="post">
         <input type="text" name="libelle" placeholder="Libelle">
         <input type="hidden" name="func" value="9"><br>
+        <input type="submit" value="Ajouter">
+    </form>
+    <br>
+    <u>Etat :</u>
+    <form action="../libs/addSQL.php" method="post">
+        <input type="text" name="libelle" placeholder="Libelle">
+        <input type="hidden" name="func" value="5"><br>
         <input type="submit" value="Ajouter">
     </form>
 </div>

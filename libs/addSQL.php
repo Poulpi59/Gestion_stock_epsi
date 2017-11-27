@@ -15,9 +15,15 @@ if ($func == 1) {
     $dateDeb = $_POST['dateDeb'];
     $dateFinTheo = $_POST['dateFinTheo'];
     $dateRest = $_POST['dateRest'];
-    $sql->query("  UPDATE emprunt 
-                          SET id_Emprunteur = '$idEmp', id_Objet = '$idObj', quantiteEmprunte = '$qte', id_Etat = '$idEtat', dateDebut = '$dateDeb', dateFinTheorique = '$dateFinTheo', dateRestitution = '$dateRest'
+    if ($dateRest == '') {
+        $sql->query("UPDATE emprunt 
+                            SET id_Emprunteur = '$idEmp', id_Objet = '$idObj', quantiteEmprunte = '$qte', id_Etat = '$idEtat', dateDebut =                                '$dateDeb', dateFinTheorique = '$dateFinTheo'
+                            WHERE id = '$id'");
+    } else {
+        $sql->query("  UPDATE emprunt 
+                          SET id_Emprunteur = '$idEmp', id_Objet = '$idObj', quantiteEmprunte = '$qte', id_Etat = '$idEtat', dateDebut =                                '$dateDeb', dateFinTheorique = '$dateFinTheo', dateRestitution = '$dateRest'
                           WHERE id = '$id'");
+    }
     $sql->close();
     header("location: ../pages/emprunt.php");
 } elseif ($func == 2) {
@@ -65,22 +71,22 @@ if ($func == 1) {
     $sql->query("INSERT INTO utilisateur (nom, prenom, id_LoginUtilisateur) VALUES ('$nom', '$prenom', '$row[id]')");
     $sql->close();
     header("location: ../pages/addDonnee.php");
-}elseif ($func == 7) {
+} elseif ($func == 7) {
     $libelle = $_POST['libelle'];
     $sql->query("INSERT INTO marque (libelle) VALUES ('$libelle')");
     $sql->close();
     header("location: ../pages/addDonnee.php");
-}elseif ($func == 8) {
+} elseif ($func == 8) {
     $libelle = $_POST['libelle'];
     $sql->query("INSERT INTO modele (libelle) VALUES ('$libelle')");
     $sql->close();
     header("location: ../pages/addDonnee.php");
-}elseif ($func == 9) {
+} elseif ($func == 9) {
     $libelle = $_POST['libelle'];
     $sql->query("INSERT INTO typeobjet (libelle) VALUES ('$libelle')");
     $sql->close();
     header("location: ../pages/addDonnee.php");
-}elseif ($func == 10) {
+} elseif ($func == 10) {
     $typeObjet = $_POST['typeObjet'];
     $marque = $_POST['marque'];
     $modele = $_POST['modele'];
