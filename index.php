@@ -13,23 +13,26 @@ if ($_SESSION["user"] != true) {
     <title>EPSI Stock - Accueil</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 
 <body>
 <?php include_once("includes/header.php"); ?>
-<nav>
-    <ul>
-        <li><a href="index.php">Accueil</a></li>
-        <li><a href="pages/emprunt.php">Emprunt</a></li>
-        <li><a href="pages/donnee.php">Ajouter Données</a></li>
-        <li><a href="pages/logout.php">Déconnexion</a></li>
-    </ul>
-
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="index.php"><h4>Accueil</h4></a></li>
+                <li><a href="pages/emprunt.php"><h4>Emprunt</h4></a></li>
+                <li><a href="pages/donnee.php"><h4>Ajouter Données</h4></a></li>
+                <li><a href="pages/logout.php"><h4>Déconnexion</h4></a></li>
+            </ul>
+        </div>
+    </div>
 </nav>
-<div class="main">
+<div class="panel-body">
     <center>
         <?php
         $sql = new sql("localhost", "root", "", "epsi_stock");
@@ -37,7 +40,7 @@ if ($_SESSION["user"] != true) {
                             FROM utilisateur
                             WHERE id_LoginUtilisateur = $_SESSION[user]");
         $row = $res->fetch();
-        echo "Bonjour ".$row['prenom']." ". $row['nom'];
+        echo "<h3>Bonjour " . $row['prenom'] . " " . $row['nom']."</h3>";
         ?>
         <a href="pages/emprunt.php"><h3>Emprunt</h3></a>
         <a href="pages/addDonnee.php"><h3>Ajouter Données</h3></a>

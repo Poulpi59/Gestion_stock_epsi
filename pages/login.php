@@ -13,15 +13,17 @@ $_SESSION["user"] = false;
 
 <body>
 <?php include_once("../includes/header.php"); ?>
-<div class="login">
-    <h2>Connexion</h2>
-    <form method="post">
-        <input type="text" name="login" placeholder="Utilisateur">
-        <br><br>
-        <input type="password" name="mdp" placeholder="Mot de Passe">
-        <br>
-        <input type="submit" name="submit" value="Connexion" class="connect">
-    </form>
+<div class="panel-body" style="border: 1px solid black; margin: 5% 25% 5% 25%;">
+    <center>
+        <h2>Connexion</h2><br>
+        <form method="post">
+            <input type="text" name="login" placeholder="Utilisateur" class="form-control" style="width: 25%">
+            <br><br>
+            <input type="password" name="mdp" placeholder="Mot de Passe" class="form-control" style="width: 25%">
+            <br><br>
+            <input type="submit" name="submit" value="Connexion" class="btn">
+        </form>
+    </center>
 </div>
 
 <?php

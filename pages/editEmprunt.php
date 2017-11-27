@@ -17,7 +17,7 @@ logged();
 include_once("../includes/header.php");
 include_once("../includes/nav.php");
 ?>
-<div class="main">
+<div class="panel-body">
     <?php
     $sql = new sql("localhost", "root", "", "epsi_stock");
     $id = $_POST["id"];
@@ -26,7 +26,7 @@ include_once("../includes/nav.php");
     ?>
     <form action="../libs/addSQL.php" method="post">
         Emprunteur :
-        <select name="idEmp">
+        <select class="form-control" name="idEmp">
             <?php
             foreach ($sql->query("SELECT * FROM emprunteur") as $row) {
                 echo "<option value=" . $row["id"] . ">" . $row["nom"] . " " . $row["prenom"] . "</option>";
@@ -34,7 +34,7 @@ include_once("../includes/nav.php");
             ?>
         </select><br>
         Objet :
-        <select name="idObj">
+        <select class="form-control" name="idObj">
             <?php
             $res = $sql->query("SELECT * FROM objet");
             while ($row = $res->fetch()) {
@@ -49,7 +49,7 @@ include_once("../includes/nav.php");
             ?>
         </select><br>
         Quantité :
-        <select name="qte">
+        <select class="form-control" name="qte">
             <?php
             echo "<option value=" . $row1["quantiteEmprunte"] . ">" . $row1["quantiteEmprunte"] . "</option>";
             for ($i = 1; $i < 100; $i++) {
@@ -60,19 +60,19 @@ include_once("../includes/nav.php");
             ?>
         </select><br>
         Etat :
-        <select name="idEtat">
+        <select class="form-control" name="idEtat">
             <?php
             foreach ($sql->query("SELECT * FROM etat") as $row) {
                 echo "<option value=" . $row["id"] . ">" . $row["libelle"] . "</option>";
             }
             ?>
         </select><br>
-        Date sortie : <input type="date" name="dateDeb" value=<?php echo $row1["dateDebut"]; ?>><br>
-        Date retour prévu : <input type="date" name="dateFinTheo" value=<?php echo $row1["dateFinTheorique"]; ?>><br>
-        Date retour : <input type="date" name="dateRest" value=<?php echo $row1["dateRestitution"]; ?>><br>
+        Date sortie : <input type="date" class="form-control" name="dateDeb" value=<?php echo $row1["dateDebut"]; ?>><br>
+        Date retour prévu : <input type="date" class="form-control" name="dateFinTheo" value=<?php echo $row1["dateFinTheorique"]; ?>><br>
+        Date retour : <input type="date" class="form-control" name="dateRest" value=<?php echo $row1["dateRestitution"]; ?>><br>
         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
         <input type="hidden" name="func" value="1">
-        <input type="submit" value="Editer">
+        <input type="submit" value="Editer" class="btn">
     </form>
 </div>
 </body>

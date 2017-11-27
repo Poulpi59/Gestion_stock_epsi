@@ -17,7 +17,7 @@ logged();
 include_once("../includes/header.php");
 include_once("../includes/nav.php");
 ?>
-<div class="main">
+<div class="panel-body">
     <?php
     $sql = new sql("localhost", "root", "", "epsi_stock");
     $res1 = $sql->query("SELECT * FROM emprunt");
@@ -25,7 +25,7 @@ include_once("../includes/nav.php");
     ?>
     <form action="../libs/addSQL.php" method="post">
         Emprunteur :
-        <select name="idEmp">
+        <select class="form-control" name="idEmp">
             <?php
             foreach ($sql->query("SELECT * FROM emprunteur") as $row) {
                 echo "<option value=" . $row["id"] . ">" . $row["nom"] . " " . $row["prenom"] . "</option>";
@@ -33,7 +33,7 @@ include_once("../includes/nav.php");
             ?>
         </select><br>
         Objet :
-        <select name="idObj">
+        <select class="form-control" name="idObj">
             <?php
             $res = $sql->query("SELECT * FROM objet");
             while ($row = $res->fetch()) {
@@ -48,7 +48,7 @@ include_once("../includes/nav.php");
             ?>
         </select><br>
         Quantité :
-        <select name="qte">
+        <select class="form-control" name="qte">
             <?php
             for ($i = 1; $i < 100; $i++) {
                 echo "<option value=" . $i . ">" . $i . "</option>";
@@ -56,18 +56,18 @@ include_once("../includes/nav.php");
             ?>
         </select><br>
         Etat :
-        <select name="idEtat">
+        <select class="form-control" name="idEtat">
             <?php
             foreach ($sql->query("SELECT * FROM etat") as $row) {
                 echo "<option value=" . $row["id"] . ">" . $row["libelle"] . "</option>";
             }
             ?>
         </select><br>
-        Date sortie : <input type="date" name="dateDeb" required><br>
-        Date retour prévu : <input type="date" name="dateFinTheo" required><br>
+        Date sortie : <input type="date" name="dateDeb" required class="form-control"><br>
+        Date retour prévu : <input type="date" name="dateFinTheo" required class="form-control"><br>
         <input type="hidden" name="id"/>
         <input type="hidden" name="func" value="3">
-        <input type="submit" value="Ajouter">
+        <input type="submit" value="Ajouter" class="btn">
     </form>
 </div>
 </body>

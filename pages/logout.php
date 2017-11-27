@@ -15,7 +15,7 @@ logged();
 include("../includes/header.php");
 session_destroy();
 ?>
-<div class="main">
+<div class="panel-body">
     <center>
         <h2>Déconnecté !</h2>
         <a href="login.php">Accueil</a>

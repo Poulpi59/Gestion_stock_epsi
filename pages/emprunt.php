@@ -17,14 +17,14 @@ logged();
 include_once("../includes/header.php");
 include_once("../includes/nav.php");
 ?>
-<div class="main">
+<div class="panel-body">
     <div style="width: 100%;">
         <form action="addEmprunt.php">
-            <input type="submit" value="Nouveau Prêt"/>
+            <input type="submit" value="Nouveau Prêt" class="btn"/>
         </form>
         <br>
     </div>
-    <table>
+    <table class="table table-striped">
         <tr>
             <th colspan="3">Emprunteur</th>
             <th colspan="5">Matériel</th>
@@ -98,13 +98,13 @@ include_once("../includes/nav.php");
                 <td>
                     <form action="editEmprunt.php" method="post">
                         <input type="hidden" name="id" value="<?php echo $row["id"]; ?>"/>
-                        <input type="submit" value="Editer"/>
+                        <input type="submit" value="Editer" class="btn"/>
                     </form>
                 </td>
                 <td>
                     <form action="emprunt.php" method="post">
                         <input type="hidden" name="id" value="<?php echo $row["id"]; ?>"/>
-                        <input type="submit" value="X" name="<?php echo $row["id"]; ?>">
+                        <input type="submit" value="X" name="<?php echo $row["id"]; ?>" class="btn"/>
                     </form>
                     <?php
                     if (isset($_POST[$row["id"]])) {
