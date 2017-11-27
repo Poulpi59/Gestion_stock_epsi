@@ -17,9 +17,9 @@ $_SESSION["user"] = false;
     <center>
         <h2>Connexion</h2><br>
         <form method="post">
-            <input type="text" name="login" placeholder="Utilisateur" class="form-control" style="width: 25%">
+            <input type="text" name="login" placeholder="Utilisateur" class="form-control">
             <br><br>
-            <input type="password" name="mdp" placeholder="Mot de Passe" class="form-control" style="width: 25%">
+            <input type="password" name="mdp" placeholder="Mot de Passe" class="form-control">
             <br><br>
             <input type="submit" name="submit" value="Connexion" class="btn">
         </form>

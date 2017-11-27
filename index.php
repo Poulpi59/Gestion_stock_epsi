@@ -14,6 +14,7 @@ if ($_SESSION["user"] != true) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
@@ -32,6 +33,7 @@ if ($_SESSION["user"] != true) {
         </div>
     </div>
 </nav>
+
 <div class="panel-body">
     <center>
         <?php
@@ -40,12 +42,13 @@ if ($_SESSION["user"] != true) {
                             FROM utilisateur
                             WHERE id_LoginUtilisateur = $_SESSION[user]");
         $row = $res->fetch();
-        echo "<h3>Bonjour " . $row['prenom'] . " " . $row['nom']."</h3>";
+        echo "<h3>Bonjour " . $row['prenom'] . " " . $row['nom'] . "</h3>";
         ?>
         <a href="pages/emprunt.php"><h3>Emprunt</h3></a>
         <a href="pages/addDonnee.php"><h3>Ajouter Données</h3></a>
     </center>
 </div>
+
 </body>
 
 </html>
