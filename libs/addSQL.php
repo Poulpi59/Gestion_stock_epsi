@@ -34,7 +34,7 @@ if ($func == 1) {
     $sql->query("  INSERT INTO emprunteur (id, nom, prenom, id_Promotion)
                           VALUES (NULL, '$nom', '$prenom', '$promo')");
     $sql->close();
-    header("location: ../pages/addDonnee");
+    header("location: ../pages/donnee");
 } elseif ($func == 3) {
     $idEmp = $_POST['idEmp'];
     $idObj = $_POST['idObj'];
@@ -53,12 +53,12 @@ if ($func == 1) {
     $sql->query("INSERT INTO promotion (nom, anneePromotion) 
                         VALUE ('$nom', '$anneePromo')");
     $sql->close();
-    header("location: ../pages/addDonnee.php");
+    header("location: ../pages/donnee.php");
 } elseif ($func == 5) {
     $libelle = $_POST['libelle'];
     $sql->query("INSERT INTO etat (libelle) VALUES ('$libelle')");
     $sql->close();
-    header("location: ../pages/addDonnee.php");
+    header("location: ../pages/donnee.php");
 } elseif ($func == 6) {
     $login = $_POST['login'];
     $mdp = $_POST['mdp'];
@@ -70,27 +70,27 @@ if ($func == 1) {
     $row = $res->fetch();
     $sql->query("INSERT INTO utilisateur (nom, prenom, id_LoginUtilisateur) VALUES ('$nom', '$prenom', '$row[id]')");
     $sql->close();
-    header("location: ../pages/addDonnee.php");
+    header("location: ../pages/donnee.php");
 } elseif ($func == 7) {
     $libelle = $_POST['libelle'];
     $sql->query("INSERT INTO marque (libelle) VALUES ('$libelle')");
     $sql->close();
-    header("location: ../pages/addDonnee.php");
+    header("location: ../pages/donnee.php");
 } elseif ($func == 8) {
     $libelle = $_POST['libelle'];
     $sql->query("INSERT INTO modele (libelle) VALUES ('$libelle')");
     $sql->close();
-    header("location: ../pages/addDonnee.php");
+    header("location: ../pages/donnee.php");
 } elseif ($func == 9) {
     $libelle = $_POST['libelle'];
     $sql->query("INSERT INTO typeobjet (libelle) VALUES ('$libelle')");
     $sql->close();
-    header("location: ../pages/addDonnee.php");
+    header("location: ../pages/donnee.php");
 } elseif ($func == 10) {
     $typeObjet = $_POST['typeObjet'];
     $marque = $_POST['marque'];
     $modele = $_POST['modele'];
     $sql->query("INSERT INTO objet (id_TypeObjet, id_Marque, id_Modele) VALUES ('$typeObjet', '$marque', '$modele')");
     $sql->close();
-    header("location: ../pages/addDonnee.php");
+    header("location: ../pages/donnee.php");
 }

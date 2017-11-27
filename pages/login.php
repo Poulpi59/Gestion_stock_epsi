@@ -14,7 +14,7 @@ $_SESSION["user"] = false;
 <body>
 <?php include_once("../includes/header.php"); ?>
 <div class="login">
-    <h2>Login</h2>
+    <h2>Connexion</h2>
     <form method="post">
         <input type="text" name="login" placeholder="Utilisateur">
         <br><br>

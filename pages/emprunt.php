@@ -22,8 +22,7 @@ include_once("../includes/nav.php");
         <form action="addEmprunt.php">
             <input type="submit" value="Nouveau Prêt"/>
         </form>
-        <button class="right">Go</button>
-        <input type="text" placeholder="Rechercher" class="right">
+        <br>
     </div>
     <table>
         <tr>

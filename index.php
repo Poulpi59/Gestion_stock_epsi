@@ -24,7 +24,7 @@ if ($_SESSION["user"] != true) {
     <ul>
         <li><a href="index.php">Accueil</a></li>
         <li><a href="pages/emprunt.php">Emprunt</a></li>
-        <li><a href="pages/addDonnee.php">Ajouter Données</a></li>
+        <li><a href="pages/donnee.php">Ajouter Données</a></li>
         <li><a href="pages/logout.php">Déconnexion</a></li>
     </ul>
 

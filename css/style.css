@@ -59,18 +59,18 @@ nav a:hover {
     padding-right: 10%;
 }
 
-.double{
-    padding-left: 10%;
-    padding-right: 10%;
+.left{
     float: left;
+    padding-left: 10%;
+}
+
+.right{
+    float: right;
+    padding-right: 10%;
 }
 
 .connect {
     margin: 5%;
-}
-
-.right {
-    float: right;
 }
 
 button {

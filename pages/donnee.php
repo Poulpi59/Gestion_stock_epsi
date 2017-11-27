@@ -16,12 +16,11 @@ logged();
 include("../includes/header.php");
 include_once("../includes/nav.php");
 ?>
-<div class="double">
-    <u><h3>Ajouter :</h3></u>
+<div class="left">
     <u>Emprunteur :</u>
     <form action="../libs/addSQL.php" method="post">
-        <input type="text" name="nom" placeholder="Nom">
-        <input type="text" name="prenom" placeholder="Prénom">
+        <input type="text" name="nom" placeholder="Nom" required>
+        <input type="text" name="prenom" placeholder="Prénom" required>
         <input type="hidden" name="func" value="2">
         Promotion :
         <select name="promo">
@@ -34,24 +33,26 @@ include_once("../includes/nav.php");
         </select><br>
         <input type="submit" value="Ajouter">
     </form>
+    <br>
     <u>Formation :</u>
     <form action="../libs/addSQL.php" method="post">
-        <input type="text" name="nom" placeholder="Nom">
-        <input type="text" name="anneePromo" placeholder="Année Promotion">
+        <input type="text" name="nom" placeholder="Nom" required>
+        <input type="text" name="anneePromo" placeholder="Année Promotion" required>
         <input type="hidden" name="func" value="4"><br>
         <input type="submit" value="Ajouter">
     </form>
     <br>
     <u>Utilisateur :</u>
     <form action="../libs/addSQL.php" method="post">
-        <input type="text" name="login" placeholder="Login">
-        <input type="text" name="mdp" placeholder="Mot de passe"><br>
-        <input type="text" name="nom" placeholder="Nom">
-        <input type="text" name="prenom" placeholder="Prénom">
+        <input type="text" name="login" placeholder="Login" required>
+        <input type="text" name="mdp" placeholder="Mot de passe" required><br>
+        <input type="text" name="nom" placeholder="Nom" required>
+        <input type="text" name="prenom" placeholder="Prénom" required>
         <input type="hidden" name="func" value="6"><br>
         <input type="submit" value="Ajouter">
     </form>
-    <br>
+</div>
+<div class="right">
     <u>Objet :</u>
     <form action="../libs/addSQL.php" method="post">
         Type :
@@ -81,33 +82,35 @@ include_once("../includes/nav.php");
         <input type="hidden" name="func" value="10"><br>
         <input type="submit" value="Ajouter">
     </form>
+    <br>
     <u>Marque :</u>
     <form action="../libs/addSQL.php" method="post">
-        <input type="text" name="libelle" placeholder="Libelle">
+        <input type="text" name="libelle" placeholder="Libelle" required>
         <input type="hidden" name="func" value="7"><br>
         <input type="submit" value="Ajouter">
     </form>
+    <br>
     <u>Modèle :</u>
     <form action="../libs/addSQL.php" method="post">
-        <input type="text" name="libelle" placeholder="Libelle">
+        <input type="text" name="libelle" placeholder="Libelle" required>
         <input type="hidden" name="func" value="8"><br>
         <input type="submit" value="Ajouter">
     </form>
+    <br>
     <u>Type Objet :</u>
     <form action="../libs/addSQL.php" method="post">
-        <input type="text" name="libelle" placeholder="Libelle">
+        <input type="text" name="libelle" placeholder="Libelle" required>
         <input type="hidden" name="func" value="9"><br>
         <input type="submit" value="Ajouter">
     </form>
     <br>
     <u>Etat :</u>
     <form action="../libs/addSQL.php" method="post">
-        <input type="text" name="libelle" placeholder="Libelle">
+        <input type="text" name="libelle" placeholder="Libelle" required>
         <input type="hidden" name="func" value="5"><br>
         <input type="submit" value="Ajouter">
     </form>
 </div>
-<u><h3>Supprimer :</h3></u>
 </body>
 
 </html>
