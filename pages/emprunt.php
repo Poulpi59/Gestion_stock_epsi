@@ -24,7 +24,7 @@ include_once("../includes/nav.php");
         </form>
         <br>
     </div>
-    <table class="table table-striped">
+    <table class="table table-striped table-bordered">
         <tr>
             <th colspan="3">Emprunteur</th>
             <th colspan="5">Matériel</th>
