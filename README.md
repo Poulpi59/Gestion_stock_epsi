@@ -9,7 +9,7 @@ Projet U'Dev 2017
 2 - Accèder au projet via la navigateur,
     la BDD est automatiquement créée avec des valeurs par défaut.
     
-3 - Se connecter avec les identifiants par défault. (admin - admin)
+3 - Se connecter avec les identifiants par défaut. (admin - admin)
 
 # Utilisation :
 
