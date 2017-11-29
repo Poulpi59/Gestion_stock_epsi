@@ -23,10 +23,10 @@ if ($_SESSION["user"] != true) {
 <?php include_once("includes/header.php"); ?>
 <nav class="navbar navbar-default">
     <div class="container-fluid">
-        <ul class="nav navbar-nav">
+        <ul class="nav nav-justified">
             <li><a href="index.php"><h4>Accueil</h4></a></li>
-            <li><a href="pages/emprunt.php"><h4>Emprunt</h4></a></li>
-            <li><a href="pages/donnee.php"><h4>Ajouter Données</h4></a></li>
+            <li><a href="pages/emprunt.php"><h4>Emprunts</h4></a></li>
+            <li><a href="pages/donnee.php"><h4>Ajouter Matériel/Utilisateur</h4></a></li>
             <li><a href="pages/logout.php"><h4>Déconnexion</h4></a></li>
         </ul>
     </div>
@@ -42,8 +42,8 @@ if ($_SESSION["user"] != true) {
         $row = $res->fetch();
         echo "<h3>Bonjour " . $row['prenom'] . " " . $row['nom'] . "</h3>";
         ?>
-        <a href="pages/emprunt.php"><h3>Emprunt</h3></a>
-        <a href="pages/addDonnee.php"><h3>Ajouter Données</h3></a>
+        <a href="pages/emprunt.php"><h3>Consulter / modifier des emprunts</h3></a>
+        <a href="pages/addDonnee.php"><h3>Ajouter du matériel ou des utilisateurs</h3></a>
     </center>
 </div>
 
